@@ -31,9 +31,30 @@ def insertion_sort_with_prints(array):
         else:
             print(f"✅ Inserted at index {j}, array now: {array}")
 
+def insertion_sort_slightly_faster(array):
+    for i in range(1, len(array)):
+        val = array[i]  # 🔹 Store the current element (we’ll insert it later)
+        j = i  # 🔹 j will track where we need to insert val
+
+        # 🔁 Shift all elements > val one step to the right
+        while j > 0 and array[j - 1] > val:
+            array[j] = array[j - 1]  # 🔸 Move the larger element to the right
+            j -= 1  # 🔸 Check the next element to the left
+
+        # ✅ Insert the saved value at its final correct position
+        array[j] = val # this way we reduce unnecessary swapping
+
+
 
 # 🔬 Testing the function
 a = [5, 3, 4, 1, 2]
 print("🔄 Before sorting:", a)
 insertion_sort_with_prints(a)
 print("\n✅ Final sorted array:", a)
+
+
+
+
+
+
+
